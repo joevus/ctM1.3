@@ -26,6 +26,16 @@
       <h2>Topics</h2>
       <form class="new-topic">
         <input type="text" name="topic" placeholder="Enter new topic">
+        <!--assign topic a parent if any -->
+        <label>
+          Parent topic (if any)
+          <select name="topicParent">
+            <option>none</option>
+            {{#each topics}}
+              {{>topic}}
+            {{/each}}
+          </select>
+        </label>
       </form>
     {{/if}}
     </header>

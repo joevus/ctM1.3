@@ -4,6 +4,7 @@ import { ReactiveDict } from 'meteor/reactive-dict';
 
 import { Resources } from '../api/resources.js';
 import { Topics } from '../api/topics.js';
+import { TopicRelationships } from '../api/topics.js';
 
 import './resource.js';
 import './topic.js';
@@ -64,12 +65,27 @@ Template.body.events({
 		// Prvent default browser form submit
 		event.preventDefault();
 
-		// Get value from form element
+		// Get new topic from form element
 		const target = event.target;
 		var topic = $(target).find('[name=topic]').val();
 
-		// Insert topic into Topics collection
-		Meteor.call('topics.insert', topic);
+		// Get new topic's parent Id from form element and create relationship
+		var topicParentId = $(target).find('[name=topicParent]').val();
+
+		// Insert topic into Topics collection, retrieve topic's Id
+		Meteor.call('topics.insert', topic, function(err, data) {
+			if (err) {
+				console.log(err);
+			}
+			
+			var topicId = data;
+
+			if (topicParentId != "none") {
+			Meteor.call('topicrelationships.insert', topicParentId, topicId);
+			console.log("topic parent Id: " + topicParentId + ", topic Id: " + topicId);
+		}
+
+		});
 
 		//Clear form
 		target.topic.value = '';

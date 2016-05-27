@@ -3,6 +3,7 @@ import { Mongo } from 'meteor/mongo';
 import { check } from 'meteor/check';
 
 export const Topics = new Mongo.Collection('topics');
+export const TopicRelationships = new Mongo.Collection('topicrelationships');
 
 Meteor.methods({
 	'topics.insert'(topic) {
@@ -13,11 +14,21 @@ Meteor.methods({
 			throw new Meteor.Error('not-authorized');
 		}
 
-		Topics.insert({
+		var Id = Topics.insert({
 			name: topic,
 			createdAt: new Date(),
 			owner: Meteor.userId(),
 			username: Meteor.user().username,
 		});
+
+		return Id;
+	},
+	'topicrelationships.insert'(parentId, childId) {
+
+		TopicRelationships.insert({
+			parentId: parentId,
+			childId: childId,
+		});
+
 	},
 });
