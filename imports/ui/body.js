@@ -43,10 +43,15 @@ Template.body.events({
 		const resName = $(target).find('[name=text]').val();
 		const resDesc = $(target).find('[name=descrip]').val();
 		const resURL = $(target).find('[name=url]').val();
+		// Get topic id
+		const resTopic = $(target).find('[name=topics]').val();
+		console.log(resTopic);
+
 		var resource = {
 			name: resName,
 			description: resDesc,
-			url: resURL
+			url: resURL,
+			topicId: resTopic,
 		};
 
 		// Insert a task into the collection
