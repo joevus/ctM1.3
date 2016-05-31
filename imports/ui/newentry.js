@@ -1,24 +1,16 @@
-/*
 import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
 import { ReactiveDict } from 'meteor/reactive-dict';
-
 import { Resources } from '../api/resources.js';
 import { Topics } from '../api/topics.js';
 import { TopicRelationships } from '../api/topics.js';
 
+import './newentry.html';
 import './resource.js';
 import './topic.js';
-import './body.html';
-import './mainLayout.js';
 
-Template.body.onCreated(function bodyOnCreated() {
-	this.state = new ReactiveDict();
-	Meteor.subscribe('resources');
-	Meteor.subscribe('topics');
-});
 
-Template.body.helpers({
+Template.newentry.helpers({
 	resources() {
 		const instance = Template.instance();
 		if (instance.state.get('hideCompleted')) {
@@ -36,7 +28,7 @@ Template.body.helpers({
 	},
 });
 
-Template.body.events({
+Template.newentry.events({
 	'submit .new-task'(event) {
 		// Prevent default browser form submit
 		event.preventDefault();
@@ -96,4 +88,3 @@ Template.body.events({
 		instance.state.set('hideCompleted', event.target.checked);
 	},
 });
-*/

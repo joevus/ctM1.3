@@ -1,0 +1,13 @@
+<template name="home">
+  <div class="container">
+	  <p>This is the home page of our blog</p>
+	  <p>
+	    <a href="/newentry.html">Make New Resource or Topic Entries</a>
+	  </p>
+	  <ul>
+	      {{#each resources}}
+	        {{>resource}}
+	      {{/each}}
+	  </ul>
+  </div>
+</template>

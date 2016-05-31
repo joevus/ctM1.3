@@ -1,0 +1,49 @@
+<template name="newentry">
+  <div class="container">
+    <header>
+      <h1>Make New Entries</h1>
+
+    <label class="hide-completed">
+      <input type="checkbox" />
+      Hide Completed Tasks, joe climbingtree
+    </label>
+
+    {{> loginButtons}}
+
+    {{#if currentUser}}
+      <h2>Resources</h2>
+      <form class="new-task">
+        <input type="text" name="text" placeholder="Type to add new resource" />
+        <input type="text" name="descrip" placeholder="Enter description of resource" />
+        <input type="text" name="url" placeholder="Enter website URL" />
+        <select name="topics">
+          {{#each topics}}
+            {{>topic}}
+          {{/each}}
+        </select>
+        <input class="button" type="submit" value="Submit" />
+      </form>
+      <h2>Topics</h2>
+      <form class="new-topic">
+        <input type="text" name="topic" placeholder="Enter new topic">
+        <!--assign topic a parent if any -->
+        <label>
+          Parent topic (if any)
+          <select name="topicParent">
+            <option>none</option>
+            {{#each topics}}
+              {{>topic}}
+            {{/each}}
+          </select>
+        </label>
+      </form>
+    {{/if}}
+    </header>
+
+    <ul>
+      {{#each resources}}
+        {{>resource}}
+      {{/each}}
+    </ul>
+  </div>
+</template>
