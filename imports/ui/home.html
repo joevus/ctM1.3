@@ -1,9 +1,19 @@
 <template name="home">
   <div class="container">
-	  <p>This is the home page of our blog</p>
+	  <p>This is the home page</p>
 	  <p>
 	    <a href="/newentry.html">Make New Resource or Topic Entries</a>
 	  </p>
+	    <div class="firstTpScreen">
+          <div id="ft1" class="firstTp">Science
+          </div>
+          <div id="ft2" class="firstTp">Technology
+          </div>
+          <div id="ft3" class="firstTp">Engineering
+          </div>
+          <div id="ft4" class="firstTp">Math
+          </div>
+        </div>
 	  <ul>
 	      {{#each resources}}
 	        {{>resource}}

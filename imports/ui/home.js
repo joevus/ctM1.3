@@ -35,6 +35,32 @@ Template.home.helpers({
 });
 
 Template.home.events({
-	
+	'click .firstTp'(event) {
+
+		var ele = event.target;
+		// num is x in #ftx. 1 = science, 2 = technology, 3 = engineering, 4 = math
+		var txt = ele.innerText.toLowerCase();
+		console.log("hit firstTp: " + txt);
+/*
+		// Get value from form element
+		const target = event.target;
+		const resName = $(target).find('[name=text]').val();
+		const resDesc = $(target).find('[name=descrip]').val();
+		const resURL = $(target).find('[name=url]').val();
+		// Get topic id
+		const resTopic = $(target).find('[name=topics]').val();
+		console.log(resTopic);
+
+		var resource = {
+			name: resName,
+			description: resDesc,
+			url: resURL,
+			topicId: resTopic,
+		};
+
+		// Insert a task into the collection
+		Meteor.call('resources.insert', resource);
+*/
+	}
 });
 

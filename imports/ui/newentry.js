@@ -9,6 +9,12 @@ import './newentry.html';
 import './resource.js';
 import './topic.js';
 
+// subscribe to data
+Template.newentry.onCreated(function newentryOnCreated() {
+	this.state = new ReactiveDict();
+	Meteor.subscribe('resources');
+	Meteor.subscribe('topics');
+});
 
 Template.newentry.helpers({
 	resources() {
