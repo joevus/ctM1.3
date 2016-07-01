@@ -14,10 +14,11 @@ FlowRouter.route('/', {
 	}
 });
 
-FlowRouter.route('/resourcePage/:resourceId', {
-	action: function() {
+FlowRouter.route('/resourcePage/:_id', {
+	action() {
 		BlazeLayout.render("mainLayout", {content: "resourcePage"});
 	}
+	// /:resourceId
 });
 
 FlowRouter.route('/newentry.html', {

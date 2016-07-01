@@ -1,7 +1,9 @@
 <template name="resource">
-  <li class="{{#if checked}}checked{{/if}} {{#if private}}private{{/if}}">
+  <li class="{{#if checked}}checked{{/if}} {{#if private}}private{{/if}} resItem">
   	<button class="delete">&times;</button>
+    
 
+    <!-- Public/Private button and Checkbox
   	<input type="checkbox" checked="{{checked}}" class="toggle-checked" />
 
   	{{#if isOwner}}
@@ -13,8 +15,9 @@
   	  	{{/if}}
   	  </button>
   	{{/if}}
+    -->
 
-  	<span class="text"><strong>{{username}}</strong> - {{name}}</span>
+  	<span class="text"><!--<strong>{{username}}</strong> - --><strong>{{name}}</strong></span>
     <div>description: {{description}}</div>
     <div>url: {{url}}</div>
   </li>

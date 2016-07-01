@@ -4,16 +4,23 @@
 	  <p>
 	    <a href="/newentry.html">Make New Resource or Topic Entries</a>
 	  </p>
-	    <div class="firstTpScreen">
-          <div id="ft1" class="firstTp">Science
-          </div>
-          <div id="ft2" class="firstTp">Technology
-          </div>
-          <div id="ft3" class="firstTp">Engineering
-          </div>
-          <div id="ft4" class="firstTp">Math
-          </div>
+	  	<!-- Back Button -->
+	  	<form>
+	  		<input type="button" id="backButton" value="Back" />
+  		</form>
+  		<br />
+  		<div class="topic topTopic">
+  			
+  		</div>
+	    <form class="firstTpScreen">
+          <input type="button" id="ft1" class="firstTp" value="Science" name="{{scienceDoc._id}}">
+          <input type="button" id="ft2" class="firstTp" value="Technology" name="{{techDoc._id}}">
+          <input type="button" id="ft3" class="firstTp" value="Engineering" name="{{engDoc._id}}">
+          <input type="button" id="ft4" class="firstTp" value="Math" name="{{mathDoc._id}}">
+        </form>
+        <div class="row middleRow">
         </div>
+        <br />
 	  <ul>
 	      {{#each resources}}
 	        {{>resource}}

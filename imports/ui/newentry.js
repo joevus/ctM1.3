@@ -35,7 +35,7 @@ Template.newentry.helpers({
 });
 
 Template.newentry.events({
-	'submit .new-task'(event) {
+	'submit .new-resource'(event) {
 		// Prevent default browser form submit
 		event.preventDefault();
 
@@ -55,7 +55,7 @@ Template.newentry.events({
 			topicId: resTopic,
 		};
 
-		// Insert a task into the collection
+		// Insert a resource into the collection
 		Meteor.call('resources.insert', resource);
 
 		// Clear form

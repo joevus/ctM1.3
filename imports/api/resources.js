@@ -16,11 +16,13 @@ Meteor.methods({
 		var resName = resAttributes.name;
 		var resDescription = resAttributes.description;
 		var resURL = resAttributes.url;
+		var resTopicId = resAttributes.topicId;
 
 		Resources.insert({
 			name: resName,
 			description: resDescription,
 			url: resURL,
+			topicId: resTopicId,
 			createdAt: new Date(),
 			owner: Meteor.userId(),
 			username: Meteor.user().username,
