@@ -1,9 +1,19 @@
 import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
+import { ReactiveDict } from 'meteor/reactive-dict';
 import { Resources } from '../api/resources.js';
 import { Ratings } from '../api/ratings.js';
 
 import './resourcePage.html';
+import './resource.js';
+import './topic.js';
+
+// subscribe to data
+Template.resourcePage.onCreated(function resourcePageOnCreated() {
+	this.state = new ReactiveDict();
+	Meteor.subscribe('ratings');
+	Meteor.subscribe('topics');
+});
 
 Template.resourcePage.helpers({
 	isOwner() {
@@ -72,5 +82,28 @@ Template.resourcePage.events({
 
 		// Insert a resource into the collection
 		Meteor.call('ratings.insert', rating);
-	}
+	},
+	'submit .new-comment'(event) {
+		// Prevent default browser form submit
+		event.preventDefault();
+		console.log("submitted .comment-form");
+
+		let resId = FlowRouter.getParam("_id");
+		// Get value from form element
+		const target = event.target;
+		let textarea = $("textarea");
+		let body = textarea.val();
+		// Get topic id
+
+		var comment = {
+			body: body,
+			resourceId: resId
+		};
+
+		// Insert a resource into the collection
+		Meteor.call('comments.insert', comment);
+
+		// Clear form
+		textarea.val('make a comment');
+	},
 });
